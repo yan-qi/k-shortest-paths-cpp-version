@@ -6,13 +6,13 @@
 ///
 ///  @author Yan Qi @date 5/28/2010
 ///
-///  $Id$
+///  $Id: GraphElements.h 65 2010-09-08 06:48:36Z yan.qi.asu $
 ///////////////////////////////////////////////////////////////////////////////
 
 #pragma once
 
 #include <string>
-
+#include <iostream>
 
 template<class T>
 class WeightGreater
@@ -73,7 +73,7 @@ public:
 class BaseVertex
 {
 	int m_nID;
-	double m_dWeight;	
+	double m_dWeight;
 
 public:
 
@@ -103,7 +103,7 @@ class BasePath
 {
 protected:
 
-	int m_nLength; 
+	int m_nLength;
 	double m_dWeight;
 	std::vector<BaseVertex*> m_vtVertexList;
 
@@ -129,7 +129,7 @@ public:
 	bool SubPath(std::vector<BaseVertex*>& sub_path, BaseVertex* ending_vertex_pt)
 	{
 
-		for (std::vector<BaseVertex*>::const_iterator pos = m_vtVertexList.begin(); 
+		for (std::vector<BaseVertex*>::const_iterator pos = m_vtVertexList.begin();
 			pos != m_vtVertexList.end(); ++pos)
 		{
 			if (*pos != ending_vertex_pt)
@@ -154,6 +154,6 @@ public:
 			(*pos)->PrintOut(out_stream);
 			out_stream << "->";
 		}
-		out_stream << std::endl <<  "*********************************************" << std::endl;	
+		out_stream << std::endl <<  "*********************************************" << std::endl;
 	}
 };

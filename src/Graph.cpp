@@ -6,7 +6,7 @@
 ///
 ///  @author Yan Qi @date 8/18/2010
 /// 
-///  $Id$
+///  $Id: Graph.cpp 65 2010-09-08 06:48:36Z yan.qi.asu $
 ///////////////////////////////////////////////////////////////////////////////
 
 #include <limits>
@@ -115,6 +115,12 @@ void Graph::_import_from_file( const string& input_file_name )
 		get_vertex_set_pt(start_vertex_pt, m_mpFanoutVertices)->insert(end_vertex_pt);
 
 	}	
+
+	if(m_nVertexNum != m_vtVertices.size())
+	{
+		cerr << "The number of nodes in the graph is "<<  m_vtVertices.size() << " instead of " << m_nVertexNum << endl;
+		exit(1);
+	}
 
 	m_nVertexNum = m_vtVertices.size();
 	m_nEdgeNum = m_mpEdgeCodeWeight.size();
