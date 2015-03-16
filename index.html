@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>K-shortest-paths-cpp-version by yan-qi</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>K-shortest-paths-cpp-version</h1>
+        <p>An implementation of the k-shorest-paths algorithm in Cpp</p>
+
+        <p class="view"><a href="https://github.com/yan-qi/k-shortest-paths-cpp-version">View the Project on GitHub <small>yan-qi/k-shortest-paths-cpp-version</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/yan-qi/k-shortest-paths-cpp-version/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/yan-qi/k-shortest-paths-cpp-version/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/yan-qi/k-shortest-paths-cpp-version">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="an-implementation-of-k-shortest-path-algorithm-cpp-version" class="anchor" href="#an-implementation-of-k-shortest-path-algorithm-cpp-version" aria-hidden="true"><span class="octicon octicon-link"></span></a>An implementation of K-Shortest Path Algorithm (Cpp Version)</h1>
+
+<p>The description of the original algorithm could be found in the paper, 'A New Implementation Of Yen's Ranking Loopless Paths Algorithm' (<a href="http://citeseer.ist.psu.edu/martins00new.html">http://citeseer.ist.psu.edu/martins00new.html</a>).</p>
+
+<h2>
+<a id="introduction" class="anchor" href="#introduction" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introduction</h2>
+
+<p>Yen’s algorithm is one of derivation algorithms for ranking the K shortest paths between a pair of nodes[1]. It always searches the shortest paths in a “pseudo”-tree containing K shortest loopless paths. The very shortest one is obtained in the first place, and the second shortest path is always explored on the basis of the shortest paths that are shorter. In our paper, we exploit the implementation of Yen’s algorithm in [1]. Compared with the straightforward implementation of Yen’s algorithm, the one present in [1] is proved to have a better performance in computational experiments, although the complexity of them are the same, O(Kn(m+nlogn)) in the worst case analysis.</p>
+
+<h2>
+<a id="implementation" class="anchor" href="#implementation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Implementation</h2>
+
+<p>The package contains the implementation of Yen's algorithm for top-k shortest paths in a directed weighted graph. </p>
+
+<p>Note that:</p>
+
+<ol>
+<li>It's implemented in CPP. (The version is 2)</li>
+<li>The source code is compiled under visual studio 2008 c/c++ compiler. </li>
+<li>Compared with previous versions, version 2 does not require Boost library any longer.</li>
+<li>Main() function explains how to use the implentation. </li>
+</ol>
+
+<h2>
+<a id="update" class="anchor" href="#update" aria-hidden="true"><span class="octicon octicon-link"></span></a>Update</h2>
+
+<ul>
+<li>A checking is added in the C++ implementation to make sure the number of vertices in the input file is correct. </li>
+<li>The C++ version of the algorithm is ready for downloading. This implementation follows the similar design as its <a href="https://github.com/yan-qi/k-shortest-paths-java-version">Java counterpart</a>.* A bug is fixed in the Java implementation. The algorithm presented in Reference [1] is not always right. Specifically, the test case with the graph (see 'test_6_1' in the source package) can not return all results if the algorithm is applied. </li>
+<li>A fix on the comparator associated with Class QYDirectedPath is provided for the CPP implementation. Thanks a lot to timothyahahn. </li>
+<li>The implementation of top-k shortest path algorithm in <em>C#</em> by Vinh Bui (<a href="mailto:vinhqb@gmail.com">vinhqb@gmail.com</a>) is added. Note that I won't test this code completely. </li>
+</ul>
+
+<h2>
+<a id="reference" class="anchor" href="#reference" aria-hidden="true"><span class="octicon octicon-link"></span></a>Reference</h2>
+
+<p>[1]: M. Pascoal and E. Martins. A new implementation of Yen’s ranking loopless paths algorithm. 4OR – Quarterly Journal of the Belgian, French and Italian Operations Research Societies, 2003.</p>
+
+<p>[2]: A Fortran implementation: <a href="http://www.mat.uc.pt/%7Eeqvm/OPP/KSPP/KSPP.html">http://www.mat.uc.pt/~eqvm/OPP/KSPP/KSPP.html</a>.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/yan-qi">yan-qi</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-135220-2");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
