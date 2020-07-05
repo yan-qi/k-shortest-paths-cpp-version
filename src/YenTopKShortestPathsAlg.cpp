@@ -160,6 +160,7 @@ BasePath* YenTopKShortestPathsAlg::next()
 			//4.4.2 Compose a candidate
 			int weight_cost = cost+sub_path->Weight();
 			delete sub_path;
+			sub_path = new Path(pre_path_list, weight_cost);
 
 			//4.4.3 Put it in the candidate pool if new
 			if (m_mpDerivationVertexIndex.find(sub_path) == m_mpDerivationVertexIndex.end())
