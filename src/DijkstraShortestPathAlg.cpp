@@ -130,6 +130,7 @@ void DijkstraShortestPathAlg::improve2vertex( BaseVertex* cur_vertex_pt, bool is
 			m_quCandidateVertices.insert(*cur_neighbor_pos);
 		}
 	}
+	delete neighbor_vertex_list_pt;
 }
 
 void DijkstraShortestPathAlg::clear()
@@ -196,7 +197,8 @@ BasePath* DijkstraShortestPathAlg::update_cost_forward( BaseVertex* vertex )
 
 		sub_path = new BasePath(vertex_list, cost);
  	}
- 	return sub_path;
+	delete adj_vertex_set;
+	return sub_path;
 }
 
 void DijkstraShortestPathAlg::correct_cost_backward( BaseVertex* vertex )
