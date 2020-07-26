@@ -21,20 +21,20 @@ using namespace std;
 
 void testDijkstraGraph()
 {
-	Graph* my_graph_pt = new Graph("data/danYen");
+	Graph* my_graph_pt = new Graph("data/test_15");
 	DijkstraShortestPathAlg shortest_path_alg(my_graph_pt);
 	BasePath* result =
 		shortest_path_alg.get_shortest_path(
-			my_graph_pt->get_vertex(46), my_graph_pt->get_vertex(13));
+			my_graph_pt->get_vertex(0), my_graph_pt->get_vertex(14));
 	result->PrintOut(cout);
 }
 
 void testYenAlg()
 {
-	Graph my_graph("../data/danYen");
+	Graph my_graph("data/test_15");
 
-	YenTopKShortestPathsAlg yenAlg(my_graph, my_graph.get_vertex(46),
-		my_graph.get_vertex(13));
+	YenTopKShortestPathsAlg yenAlg(my_graph, my_graph.get_vertex(0),
+		my_graph.get_vertex(14));
 
 	int i=0;
 	while(yenAlg.has_next())
@@ -49,4 +49,5 @@ int main(...)
 	cout << "Welcome to the real world!" << endl;
 
 	testDijkstraGraph();
+	testYenAlg();
 }
