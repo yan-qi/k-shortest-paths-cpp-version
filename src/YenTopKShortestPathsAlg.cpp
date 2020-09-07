@@ -82,9 +82,9 @@ BasePath* YenTopKShortestPathsAlg::next()
 		if (sub_path_length != cur_result_sub_path_of_derivation_pt.size()) continue;
 		
 		bool is_equal = true;
-		for (int i=0; i<sub_path_length; ++i)
+		for (int j=0; j<sub_path_length; ++j)
 		{
-			if (sub_path_of_derivation_pt.at(i) != cur_result_sub_path_of_derivation_pt.at(i))
+			if (sub_path_of_derivation_pt.at(j) != cur_result_sub_path_of_derivation_pt.at(j))
 			{
 				is_equal = false;
 				break;
