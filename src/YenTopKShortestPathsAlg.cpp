@@ -158,7 +158,7 @@ BasePath* YenTopKShortestPathsAlg::next()
 			}
 
 			//4.4.2 Compose a candidate
-			int weight_cost = cost+sub_path->Weight();
+			double weight_cost = cost+sub_path->Weight();
 			delete sub_path;
 			sub_path = new Path(pre_path_list, weight_cost);
 
