@@ -35,8 +35,8 @@ private:
 public:
 
 	YenTopKShortestPathsAlg(const Graph& graph)
+		: YenTopKShortestPathsAlg(graph, NULL, NULL)
 	{
-		YenTopKShortestPathsAlg(graph, NULL, NULL);
 	}
 
 	YenTopKShortestPathsAlg(const Graph& graph, BaseVertex* pSource, BaseVertex* pTarget)
