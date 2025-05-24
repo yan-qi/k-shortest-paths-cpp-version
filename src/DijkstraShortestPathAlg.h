@@ -13,6 +13,11 @@
 
 #pragma once
 
+#include <queue>  // For std::priority_queue
+#include <vector> // For std::vector (underlying container for std::priority_queue)
+#include "GraphElements.h" // Should be after standard includes
+#include "Graph.h"         // Should be after standard includes
+
 using namespace std;
 
 class DijkstraShortestPathAlg
@@ -26,7 +31,8 @@ private: // members
 
 	std::set<int> m_stDeterminedVertices;
 	
-	std::multiset<BaseVertex*, WeightLess<BaseVertex> > m_quCandidateVertices;
+	// Changed from std::multiset to std::priority_queue
+	std::priority_queue<BaseVertex*, std::vector<BaseVertex*>, WeightLess<BaseVertex>> m_quCandidateVertices;
 	
 public:
 	DijkstraShortestPathAlg(Graph* pGraph):m_pDirectGraph(pGraph){}

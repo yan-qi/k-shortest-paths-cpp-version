@@ -58,15 +58,14 @@ void DijkstraShortestPathAlg::determine_shortest_paths( BaseVertex* source, Base
 	BaseVertex* start_vertex = is_source2sink ? source : sink;
 	m_mpStartDistanceIndex[start_vertex] = 0;
 	start_vertex->Weight(0);
-	m_quCandidateVertices.insert(start_vertex);
+	m_quCandidateVertices.push(start_vertex); // Changed from insert to push
 
 	//3. start searching for the shortest path
 	while (!m_quCandidateVertices.empty())
 	{
-		multiset<BaseVertex*, WeightLess<BaseVertex> >::const_iterator pos = m_quCandidateVertices.begin();
-
-		BaseVertex* cur_vertex_pt = *pos; //m_quCandidateVertices.top();
-		m_quCandidateVertices.erase(pos);
+		// Changed from multiset operations to priority_queue operations
+		BaseVertex* cur_vertex_pt = m_quCandidateVertices.top();
+		m_quCandidateVertices.pop();
 	
 		if (cur_vertex_pt == end_vertex) break;
 
@@ -115,19 +114,11 @@ void DijkstraShortestPathAlg::improve2vertex( BaseVertex* cur_vertex_pt, bool is
 			
 			(*cur_neighbor_pos)->Weight(distance);
 
-			multiset<BaseVertex*, WeightLess<BaseVertex> >::const_iterator pos = m_quCandidateVertices.begin();
-			for(; pos != m_quCandidateVertices.end(); ++pos)
-			{
-				if ((*pos)->getID() == (*cur_neighbor_pos)->getID())
-				{
-					break;
-				}
-			}
-			if(pos != m_quCandidateVertices.end())
-			{
-				m_quCandidateVertices.erase(pos);
-			}
-			m_quCandidateVertices.insert(*cur_neighbor_pos);
+			// Removed the search-and-erase logic for std::multiset.
+			// With std::priority_queue, we just push the updated vertex.
+			// Stale entries will be ignored due to the m_stDeterminedVertices check
+			// or because their path cost is higher.
+			m_quCandidateVertices.push(*cur_neighbor_pos); // Changed from insert to push
 		}
 	}
 	delete neighbor_vertex_list_pt;
@@ -138,7 +129,12 @@ void DijkstraShortestPathAlg::clear()
 	m_stDeterminedVertices.clear();
 	m_mpPredecessorVertex.clear();
 	m_mpStartDistanceIndex.clear();
-	m_quCandidateVertices.clear();
+	// std::priority_queue does not have a clear() method.
+	// We need to pop elements until it's empty.
+	while(!m_quCandidateVertices.empty())
+	{
+		m_quCandidateVertices.pop();
+	}
 }
 
 BasePath* DijkstraShortestPathAlg::update_cost_forward( BaseVertex* vertex )
