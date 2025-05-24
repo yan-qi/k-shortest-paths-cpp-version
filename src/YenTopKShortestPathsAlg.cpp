@@ -108,7 +108,7 @@ BasePath* YenTopKShortestPathsAlg::next()
 
 	//3. Calculate the shortest tree rooted at target vertex in the graph
 	DijkstraShortestPathAlg reverse_tree(m_pGraph);
-	reverse_tree.get_shortest_path_flower(m_pTargetVertex);
+	reverse_tree.determine_shortest_paths(NULL, m_pTargetVertex, false);
 
 	//4. Recover the deleted vertices and update the cost and identify the new candidates results
 	bool is_done = false;
